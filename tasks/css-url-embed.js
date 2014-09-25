@@ -91,8 +91,12 @@ module.exports = function(grunt) {
         }
         
         if (!grunt.file.exists(urlFullPath)) {
-          grunt.log.warn('"' + (grunt.option('verbose') ? urlFullPath : url) + '" not found on disk');
-          return;
+          //grunt.log.warn('"' + (grunt.option('verbose') ? urlFullPath : url) + '" not found on disk');
+          urlFullPath = path.resolve(path.dirname(f) + '/' + url);
+          if (!grunt.file.exists(urlFullPath)) {
+              grunt.log.warn('"' + (grunt.option('verbose') ? urlFullPath : url) + '" not found on disk');
+              return;
+          }
         }
         
         var base64Content = fs.readFileSync(urlFullPath, 'base64');
