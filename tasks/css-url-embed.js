@@ -91,8 +91,7 @@ module.exports = function(grunt) {
         }
         
         if (!grunt.file.exists(urlFullPath)) {
-          //grunt.log.warn('"' + (grunt.option('verbose') ? urlFullPath : url) + '" not found on disk');
-          urlFullPath = path.resolve(path.dirname(f) + '/' + url);
+          urlFullPath = path.resolve(path.join(path.dirname(f), url));
           if (!grunt.file.exists(urlFullPath)) {
               grunt.log.warn('"' + (grunt.option('verbose') ? urlFullPath : url) + '" not found on disk');
               return;
